@@ -28,7 +28,7 @@ disk_available=$(echo "$disk_free" | awk '{print $4}'| sed -n 6p | xargs)
 timestamp=$(vmstat -t | awk '{print $18, $19}' | tail -n1 | xargs)
 
 #Get host_id from host_info table
-host_id="(SELECT id FROM host_info WHERE hostname='$hostname')";
+host_id="(SELECT host_id FROM host_info WHERE hostname='$hostname')";
 
 #Insert data into host_usage table
 insert_stmt="INSERT INTO host_usage(timestamp,host_id,memory_free,cpu_idle,cpu_kernel,disk_io,disk_available)
