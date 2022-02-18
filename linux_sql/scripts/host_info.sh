@@ -1,4 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> feature/sql_queries
 =======
 <<<<<<< Updated upstream
 =======
@@ -32,7 +37,12 @@ cpu_model=$(echo "$lscpu_out"  | egrep "^Model name:" | awk '{print$3, $4, $5, $
 
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+echo "Model name is $cpu_model"
+>>>>>>> 4a16c56cc10d888075ba56b1183941e603a7e16c
+>>>>>>> feature/sql_queries
 =======
 echo "Model name is $cpu_model"
 >>>>>>> 4a16c56cc10d888075ba56b1183941e603a7e16c
@@ -57,7 +67,13 @@ psql -h $psql_host -p $psql_port -d $db_name -U $psql_user -c "$insert_stmt"
 exit $?
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 exit $?
+=======
+exit $?
+>>>>>>> 4a16c56cc10d888075ba56b1183941e603a7e16c
+>>>>>>> Stashed changes
+>>>>>>> feature/sql_queries
 =======
 exit $?
 >>>>>>> 4a16c56cc10d888075ba56b1183941e603a7e16c
