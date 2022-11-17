@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS PUBLIC.host_info
      CONSTRAINT host_id_pk PRIMARY KEY (id)
     );
 
+--If it does not exist, create table for usage data
   CREATE TABLE IF NOT EXISTS PUBLIC.host_usage
     (
        "timestamp"      TIMESTAMP NOT NULL,
