@@ -38,7 +38,7 @@ case $cmd in
 	;;
 
   start|stop)
-  #Exit with code 1 if container doe snot exist
+  #Exit with code 1 if container does not exist
   if [ $container_status -ne 0 ]; then
     echo 'Cannot ' $cmd '. ' 'Container does not exist.'
     exit 1
