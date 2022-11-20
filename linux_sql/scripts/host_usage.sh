@@ -30,13 +30,14 @@ timestamp=$(vmstat -t | awk '{print $18, $19}' | tail -n1 | xargs)
 #Get host_id from host_info table
 host_id="(SELECT host_id FROM host_info WHERE hostname='$hostname')";
 
-#Insert data into host_usage table
+#Instert statement stored into a variable to be used later in the program
+#Insert statement inserts host's usage data into the table
 insert_stmt="INSERT INTO host_usage(timestamp,host_id,memory_free,cpu_idle,cpu_kernel,disk_io,disk_available)
             VALUES('$timestamp',$host_id,$memory_free,$cpu_idle,$cpu_kernel,$disk_io,'$disk_available')"
 
 #Environment variable
 export PGPASSWORD=$psql_password
 
-#Execute insert statement
+#Execute the insert statement
 psql -h $psql_host -p $psql_port -d $db_name -U $psql_user -c "$insert_stmt"
 exit $?

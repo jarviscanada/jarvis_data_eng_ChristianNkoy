@@ -29,7 +29,8 @@ total_mem=$(echo "$mem_info" | egrep "^MemTotal:" | awk '{print$2}' | xargs)
 
 timestamp=$(vmstat -t | awk '{print $18, $19}' | tail -n1 | xargs)
 
-#Insert hardware specs data into host_info table
+#Store long insert statement into a variable
+#Insert statement inserts hardware specs data into host_info table
 #Id is incremented automatically, no need to insert id value
 insert_stmt="INSERT INTO host_info(hostname,cpu_number,cpu_architecture,cpu_model,cpu_mhz,L2_cache,total_mem,timestamp)
             VALUES('$hostname',$cpu_number,'$cpu_architecture','$cpu_model',$cpu_mhz,'$l2_cache',$total_mem,'$timestamp')"
