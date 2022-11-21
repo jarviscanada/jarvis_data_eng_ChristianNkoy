@@ -92,4 +92,4 @@ This project was deployed using the following tools: `GitHub`, `Docker`, and `cr
 ## Improvements
 - Automatically generate resource usage reports
 - Make suggestions on node addition/removal
-- Add a UI
+- Add a nice UI
