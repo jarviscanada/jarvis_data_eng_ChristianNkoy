@@ -19,11 +19,25 @@ public class JDBCExecutor {
             "hplussport", "postgres", "password");
     try{
       Connection connection = dcm.getConnection();
-      Statement statement = connection.createStatement();
-      ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM CUSTOMER");
-      while(resultSet.next()){
-      logger.info(String.valueOf(resultSet.getInt(1)));
-      }
+      CustomerDAO customerDAO = new CustomerDAO(connection);
+      Customer customer = new Customer();
+      customer.setFirstName("John");
+      customer.setLastName("Adams");
+      customer.setEmail("jadams.wh.gov");
+      customer.setAddress("1234 Main St");
+      customer.setCity("Arlington");
+      customer.setState("VA");
+      customer.setPhone("(555) 555-9845");
+      customer.setZipCode("01234");
+
+      Customer dbCustomer = customerDAO.create(customer);
+      logger.info(String.valueOf(dbCustomer));
+      dbCustomer = customerDAO.findById(dbCustomer.getId());
+      logger.info(String.valueOf(dbCustomer));
+      dbCustomer.setEmail("john.adams@wh.gov");
+      dbCustomer = customerDAO.update(dbCustomer);
+      logger.info(String.valueOf(dbCustomer));
+      customerDAO.delete(dbCustomer.getId());
     }catch(SQLException e){
       logger.error("Problem connecting to database", e);
     }
