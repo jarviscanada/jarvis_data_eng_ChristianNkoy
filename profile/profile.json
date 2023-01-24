@@ -18,27 +18,26 @@
   "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_ChristianNkoy",
   "highlighted_projects": [
     {
-      "description": "I worked with a team on designing an algorithm that used a min-max tree to determine the best move in the game of Nim, given a game state. Leveraged Python to implement the algorithm. I tested the application manually by playing multiple games and keeping track of winning/losing records. The program won first place in a competition.",
+      "description": "I worked with a team on designing an algorithm that used a min-max tree to determine the best move in the game of Nim, given a game state. I used Python to implement the algorithm. I tested the application manually by playing multiple games and keeping track of winning/losing records. The program won first place in a competition.",
       "git_url": "https://github.com/chrisnkoy/nim-move",
       "name": "Nim-move"
     },
     {
-      "description": "I implemented a virtual machine using Java and multi-threaded programming features such as Runnable, Thread, Lock, and BufferedReader. I used manual testing to ensure that the functionalities of the VM worked correctly. Finally, I used Git to deploy the app.",
+      "description": "I implemented a virtual machine using Java and multi-threaded programming features such as Runnable, Thread, Lock, and BufferedReader. I used manual testing to ensure that the functionalities of the VM worked correctly. I deployed the app using GitHub.",
       "git_url": "https://github.com/chrisnkoy/vm",
       "name": "VM"
     }
   ],
   "jarvis_projects": [
     {
-      "description": "I designed a monitoring agent for a Linux cluster. I provisioned a PostgreSQL instance for data persistence using Docker. Next, I wrote Bash scripts to collect hardware specifications and resource usage data for each host in the cluster. Then, I leveraged CentOS’s crontab to automate the collection of resource usage data. Finally, I tested the MVP using multiple queries on a single machine and deployed it using Git and Docker.",
+      "description": "I developed a monitoring agent for a Linux cluster. The monitoring agent collected hardware specifications and resource usage data for each host in the cluster.  I collected data using Bash scripts. I leveraged PostgreSQL for data persistence and used CentOS’s crontab to automate the collection of resource usage data. I tested the MVP using multiple queries on a single machine and deployed it using Git and Docker.",
       "git_url": "/linux_sql",
       "name": "Cluster Monitor"
     },
     {
       "description": [
-        "Twitter App: In progress.",
-        "JDBC App: I implemented an application that performed CRUD operations against a database. I utilized Docker to instantiate a PostgreSQL database. Then, I connected to and modified the database using Java’s JDBC API and DAO. Next, I tested the application manually with multiple SQL queries. Finally, I deployed the app using Docker.",
-        "Grep App: I architectured an application that mimics Linux’s grep command. I took advantage of Java’s tools and features, such as Interface, Stream API, and Lambda expressions, as well as IntelliJ, to implement the app. In addition, I used Maven for package management and tested the application with multiple text files and string inputs. I also used Docker for deployment."
+        "JDBC App: I implemented an application that performed CRUD operations against an RDBMS database. The application connected to a PostgreSQL database and executed SQL statements on it. I used Java's JDBC API and the DAO pattern to achieve this. I tested the application manually with multiple SQL queries. I used Docker for deployment.",
+        "Grep App: I developed an application that mimics Linux’s grep command. The app scanned an input file for matching strings and wrote each line where a match occurred onto an output file. I took advantage of Java’s tools and features, such as Stream API, and Lambda expressions, as well as IntelliJ, to implement the app. I used Maven for package management and tested the application with multiple text files and string inputs. I also used Docker for deployment."
       ],
       "git_url": "/core_java",
       "name": "Core Java Apps"
@@ -87,6 +86,8 @@
       "Docker",
       "PostgreSQL",
       "Maven",
+      "JUnit",
+      "REST API",
       "Multi-threaded programming"
     ],
     "familiar": [
@@ -96,6 +97,7 @@
       "Flask",
       "NodeJS",
       "ReactJS",
+      "Mockito",
       "Event-driven programming"
     ],
     "proficient": [
@@ -109,5 +111,5 @@
       "Cloud Platform"
     ]
   },
-  "summary": "Hi, my name is Christian, and I studied computer science and mathematics at university. I work at Jarvis as a software developer. At Jarvis, I have the opportunity to learn and utilize relevant technologies and skills in software development. I love applying logical and abstract thinking to solve complex problems. Being a software developer is exciting because it allows me to solve real-life problems and impact how people use technology. I enjoy working in a collaborative environment and am just as comfortable working independently. My strengths include a solid mathematical background, the ability to communicate effectively in multiple languages, and an insatiable desire to learn and continually improve. You can catch me on a soccer field or playing a strategy game when I am not writing code."
+  "summary": "Hi, my name is Christian, and I studied computer science and mathematics at university. I work at Jarvis as a software developer. I love applying logical and abstract thinking to solve complex problems. I aspire to become a full-stack software developer. I am excited at the idea of building applications that solve real-life problems and impact how people use technology. My strengths include a solid mathematical background, the ability to communicate effectively in multiple languages, and an insatiable desire to learn and continually improve. You can catch me on a soccer field or playing a strategy game when I am not writing code."
 }
