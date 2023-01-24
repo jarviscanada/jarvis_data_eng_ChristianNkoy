@@ -43,7 +43,7 @@ public class TwitterHttpHelper implements HttpHelper{
 
     /**
      * Http POST request
-     * @param uri 
+     * @param uri URI
      * @return http POST response
      */
     @Override
@@ -57,7 +57,8 @@ public class TwitterHttpHelper implements HttpHelper{
 
     /**
      * Http GET request
-     * @param uri 
+     *
+     * @param uri URI
      * @return http GET response
      */
     @Override
@@ -74,7 +75,7 @@ public class TwitterHttpHelper implements HttpHelper{
      */
     private HttpResponse executeHttpRequest(HttpMethod method, URI uri, StringEntity stringEntity)
         throws OAuthException, IOException {
-        if(method == HttpMethod.POST){
+        if(method == HttpMethod.POST) {
             HttpPost request = new HttpPost(uri);
             if(stringEntity != null){
                 request.setEntity(stringEntity);

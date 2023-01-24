@@ -33,7 +33,7 @@ public class TweetUtil {
         coordinatesObject.setType("Point");
         tweet.setCoordinates(coordinatesObject);
 
-        // Collect hashtags from the text
+        // Collect hashtags from the tweet text
         Matcher matcher = Pattern.compile("#\\w+").matcher(text);
         int[] indices;
         while (matcher.find()) {
