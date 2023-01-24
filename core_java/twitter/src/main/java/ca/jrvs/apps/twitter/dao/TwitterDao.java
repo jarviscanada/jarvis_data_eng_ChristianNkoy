@@ -3,6 +3,18 @@ package ca.jrvs.apps.twitter.dao;
 
 import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
+import com.google.gdata.util.common.base.PercentEscaper;
+import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
+import org.jcp.xml.dsig.internal.dom.Utils;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+
 
 public class TwitterDao implements CrdDao<Tweet, String> {
     //URI constants
@@ -27,36 +39,136 @@ public class TwitterDao implements CrdDao<Tweet, String> {
      */
     public TwitterDao(HttpHelper httpHelper){this.httpHelper = httpHelper;}
 
-    /**
-     * Create an entity(Tweet) to the underlying storage
+    /***
      *
-     * @param entity entity that to be created
-     * @return created entity
+     * @param tweet to be created
+     * @return
      */
     @Override
-    public Tweet create(Tweet entity) {
-        return null;
+    public Tweet create(Tweet tweet) {
+        // Construct URI
+        URI uri;
+        try{
+            uri = getPostUri(tweet);
+        } catch (URISyntaxException | UnsupportedEncodingException e) {
+            throw new IllegalArgumentException("Invalid tweet input", e);
+        }
+
+        //Execute HTTP Request
+        HttpResponse response = httpHelper.httpPost(uri);
+
+        //Validate response and deser response to Tweet object
+        return parseResponseBody(response, HTTP_OK);
     }
 
-    /**
-     * Find an entity(Tweet) by its id
-     *
-     * @param s entity id
-     * @return Tweet entity
-     */
+
     @Override
-    public Tweet findById(String s) {
-        return null;
+    public Tweet findById(String id) {
+        URI uri;
+    try {
+        uri = getShowUri(id);
+    } catch (URISyntaxException e) {
+        throw new IllegalArgumentException("Invalid id input", e);
     }
 
-    /**
-     * Delete an entity(Tweet) by its ID
-     *
-     * @param s of the entity to be deleted
-     * @return deleted entity
-     */
+    HttpResponse response = httpHelper.httpGet(uri);
+    return parseResponseBody(response, HTTP_OK);
+
+    }
+
     @Override
-    public Tweet deleteById(String s) {
-        return null;
+    public Tweet deleteById(String id) {
+        URI uri;
+    try {
+        uri = getDeleteUri(id);
+    } catch (URISyntaxException e) {
+        throw new IllegalArgumentException("Invalid id input", e);
+    }
+    HttpResponse response = httpHelper.httpPost(uri);
+    return parseResponseBody(response, HTTP_OK);
+    }
+
+    /***
+     * Create URI for posting tweet
+     *
+     * @param tweet
+     * @return URI object
+     * @throws URISyntaxException
+     * @throws UnsupportedEncodingException
+     */
+    private URI getPostUri(Tweet tweet) throws URISyntaxException, UnsupportedEncodingException {
+        String status = tweet.getText();
+        String coordinates = "long=" + tweet.getCoordinates().getCoordinates().get(0) + AMPERSAND +
+                                "lat=" + tweet.getCoordinates().getCoordinates().get(1);
+        PercentEscaper percentEscaper = new PercentEscaper("", false);
+        return new URI(API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + percentEscaper.escape(status) +
+                            AMPERSAND + coordinates);
+    }
+
+    /***
+     * Create URI for showing tweet
+     *
+     * @param id tweet id string
+     * @return URI for showing tweet
+     * @throws URISyntaxException
+     */
+    private URI getShowUri(String id) throws URISyntaxException {
+        return new URI(API_BASE_URI + SHOW_PATH + QUERY_SYM + "id" + EQUAL + id);
+    }
+
+    /***
+     * Create URI for deleting tweet
+     *
+     * @param id tweet id
+     * @return URI for deleting tweet
+     * @throws URISyntaxException
+     */
+    private URI getDeleteUri(String id) throws URISyntaxException {
+        String slashIdDotJson = "/" + id + ".json";
+        return new URI(API_BASE_URI + DELETE_PATH + slashIdDotJson);
+    }
+
+    /***
+     * Check response status code
+     * Convert response entity to tweet
+     *
+     * @param response
+     * @param expectedStatusCode
+     * @return Tweet object
+     */
+    Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode) {
+        Tweet tweet = null;
+
+        //Check response status
+        int status = response.getStatusLine().getStatusCode();
+        if (status != expectedStatusCode) {
+            try{
+                System.out.println(EntityUtils.toString(response.getEntity()));
+            } catch (IOException e) {
+                System.out.println("Response has no entity");
+            }
+            throw new RuntimeException("Expected HTTP status: " + status);
+        }
+
+        if (response.getEntity() == null){
+            throw new RuntimeException("Empty response body");
+        }
+
+        //Convert response entity to str
+        String jsonStr;
+        try{
+            jsonStr = EntityUtils.toString(response.getEntity());
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to convert entity to string", e);
+        }
+
+        //Deser JSON string to Tweet object
+        try{
+            tweet = JsonUtil.toObjectFromJson(jsonStr, Tweet.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to convert JSON str to Object", e);
+        }
+
+        return tweet;
     }
 }
