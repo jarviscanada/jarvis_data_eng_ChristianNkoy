@@ -1,0 +1,118 @@
+# Preferred name (Characters only)
+name: "Christian Nkoy"
+# Your GitHub repo root URL
+github_repo_root_url: "https://github.com/jarviscanada/jarvis_data_eng_ChristianNkoy"
+
+# Introduce yourself, your academic and professional background.
+# What excites you about the software industry and your passion. At least 80 words
+summary: "Hi, my name is Christian, and I studied computer science and mathematics at university. I work at Jarvis as a software developer. I love applying logical and abstract thinking to solve complex problems. I aspire to become a full-stack software developer. I am excited at the idea of building applications that solve real-life problems and impact how people use technology. My strengths include a solid mathematical background, the ability to communicate effectively in multiple languages, and an insatiable desire to learn and continually improve. You can catch me on a soccer field or playing a strategy game when I am not writing code."
+
+# Group your skills by level.
+# Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
+skills:
+  # At least 5 skills
+  proficient:
+    - Java
+    - Python
+    - Linux/Bash
+    - RDBMS/SQL
+    - Git
+    - IntelliJ
+    - Agile/Scrum
+    - Cloud Platform
+  # At least 5 skills
+  competent:
+    - HTML
+    - CSS
+    - JavaScript
+    - Docker
+    - PostgreSQL
+    - Maven
+    - JUnit
+    - REST API
+    - Multi-threaded programming
+  # At least 5 skills
+  familiar:
+    - C
+    - C++
+    - C#
+    - Flask
+    - NodeJS
+    - ReactJS
+    - Mockito
+    - Event-driven programming
+    
+# List of Jarvis projects
+jarvis_projects:
+  - name: "Cluster Monitor"
+    git_url: "/linux_sql"
+    # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "I developed a monitoring agent for a Linux cluster. The monitoring agent collected hardware specifications and resource usage data for each host in the cluster.  I collected data using Bash scripts. I leveraged PostgreSQL for data persistence and used CentOS’s crontab to automate the collection of resource usage data. I tested the MVP using multiple queries on a single machine and deployed it using Git and Docker."
+  - name: "Core Java Apps"
+    git_url: "/core_java"
+    description:
+      - "JDBC App: I implemented an application that performed CRUD operations against an RDBMS database. The application connected to a PostgreSQL database and executed SQL statements on it. I used Java's JDBC API and the DAO pattern to achieve this. I tested the application manually with multiple SQL queries. I used Docker for deployment."
+      - "Grep App: I developed an application that mimics Linux’s grep command. The app scanned an input file for matching strings and wrote each line where a match occurred onto an output file. I took advantage of Java’s tools and features, such as Stream API, and Lambda expressions, as well as IntelliJ, to implement the app. I used Maven for package management and tested the application with multiple text files and string inputs. I also used Docker for deployment."
+
+# List of personal or academic projects
+# Feel free to add more projects
+highlighted_projects:
+    #project name
+  - name: "Nim-move"
+    #URL is optional
+    git_url: "https://github.com/chrisnkoy/nim-move"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "I worked with a team on designing an algorithm that used a min-max tree to determine the best move in the game of Nim, given a game state. I used Python to implement the algorithm. I tested the application manually by playing multiple games and keeping track of winning/losing records. The program won first place in a competition."  
+  - name: "VM"
+    git_url: "https://github.com/chrisnkoy/vm"
+    description: "I implemented a virtual machine using Java and multi-threaded programming features such as Runnable, Thread, Lock, and BufferedReader. I used manual testing to ensure that the functionalities of the VM worked correctly. I deployed the app using GitHub."
+    
+#List of professional experience
+#The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+#The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem-solving, improvements, communication).
+professional_experience:
+  #Write your Jarvis role as a professional experience rather than training.
+  - title: "Software Developer"
+    company: "Jarvis"
+    duration: "November 2022 - present"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "I work on various projects using relevant technologies
+such as Linux/Bash, Java, PostgreSQL, Git, and Docker. I collaborate with a team by leveraging the Agile methodology for software development to achieve project goals. As a team lead, I organized daily scrums and communicated with the team about sprint goals, progress, and impediments. I also generated a daily summary of scrum meetings and made it available to the scrum master and product owner."
+  - title: "Technical Services Specialist - Seasonal"
+    company: "Sterling Operations"
+    duration: "May 2018 - October 2021"
+    description: "I employed innovative and eﬀicient measures to treat 750+ sites for vegetation and erosion control every season with a 95+% success rate. I trained and mentored new employees and helped them achieve competency in their roles in minimal time. In addition, I communicated regularly with stakeholders to plan and coordinate the implementation of control measures."
+#List of edcuation
+education: 
+  - school_name: "University of Northern British Columbia"
+    duration: "2018-2021"
+    degree: "Bachelor of Science"
+    department: "Computer Science"
+    #courses: "Data Structures, Algorithm Design, Software Engineering, Database Systems"
+    # optional
+    awards_achievements: 
+    #  - "Scholarship"
+    #  - "Dean's List (2015, 2016): Ut enim ad minim veniam"
+    # - "GPA: 3.8/4.0"
+  - school_name: "University of Northern British Columbia"
+    duration: "2016-2018"
+    degree: "Bachelor of Science"
+    department: "Mathematics"
+    #courses: "Probability and Statistics, Experimental Design and Analysis"
+    awards_achievements: 
+    
+#Optional section
+others:
+    #category
+  - title: "Certificates"
+    #list of items
+    bullets:
+      - "Occupational First Aid Certification"
+  - title: "Awards"
+    bullets:
+      - "UNBC Soccer Intramurals Champion"
+  - title: "Activities/Hobbies"
+    bullets:
+      - "Strategy Games"
+
