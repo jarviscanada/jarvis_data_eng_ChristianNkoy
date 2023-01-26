@@ -68,7 +68,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     try {
         uri = getShowUri(id);
     } catch (URISyntaxException e) {
-        throw new IllegalArgumentException("Invalid id input", e);
+        throw new IllegalArgumentException("Invalid id input.", e);
     }
 
     HttpResponse response = httpHelper.httpGet(uri);
