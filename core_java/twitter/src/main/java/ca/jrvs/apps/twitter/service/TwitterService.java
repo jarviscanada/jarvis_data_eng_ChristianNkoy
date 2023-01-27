@@ -55,17 +55,11 @@ public class TwitterService implements Service{
     @Override
     public Tweet showTweet(String id, String[] fields) throws IllegalArgumentException{
         validateTweetId(id);
-        validateTweetFields(fields);
         Tweet tweet = (Tweet) dao.findById(id);
-        handleFields(fields, tweet);
-        return tweet;
-    }
-
-    /* Validate tweet fields array method */
-    private void validateTweetFields(String[] fields) {
-        if(fields == null){
-            throw new IllegalArgumentException("Invalid fields input.");
+        if(fields != null) {
+            handleFields(fields, tweet);
         }
+        return tweet;
     }
 
     /* Validate tweet id */
@@ -89,8 +83,11 @@ public class TwitterService implements Service{
             if (userFieldsList.contains(tweetField.getName())) {
                 continue;
             }
-            if(!tweetField.getType().isPrimitive() && !tweetField.getName().equals("id_str")) {
-                // Only set object fields, including strings, to null except for id_str
+            if(!tweetField.getType().isPrimitive() &&
+                !tweetField.getName().equals("id_str") &&
+                !tweetField.getName().equals("text")) {
+                // Only set object fields, including strings, to null
+                // except for id_str and text
                 tweetField.setAccessible(true);
                 try {
                     tweetField.set(tweet, null);

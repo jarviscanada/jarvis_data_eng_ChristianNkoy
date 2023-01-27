@@ -13,6 +13,9 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -20,12 +23,13 @@ import java.util.List;
 public class TwitterServiceUnitTest {
 
     @Mock
-    CrdDao dao;
+    private CrdDao dao;
 
     @InjectMocks
-    TwitterService service;
+    private TwitterService service;
 
-    Tweet testTweet;
+    private Tweet testTweet;
+    private Tweet testTweet2;
 
     @Before
     public void setUp() {
@@ -34,6 +38,14 @@ public class TwitterServiceUnitTest {
         Double lat = -22.90346877288241;
         try {
             testTweet = TweetUtil.buildTweet(text, lon, lat);
+        } catch (Exception e) {
+            throw new RuntimeException("Could not build tweet.");
+        }
+        String text2 = "This is a tweet from Paris.";
+        Double lon2 = 2.2690042584256296;
+        Double lat2 = 48.841220322056635;
+        try {
+            testTweet2 = TweetUtil.buildTweet(text2, lon2, lat2);
         } catch (Exception e) {
             throw new RuntimeException("Could not build tweet.");
         }
@@ -52,16 +64,18 @@ public class TwitterServiceUnitTest {
         String[] fields = {"text", "coordinates"};
         Tweet foundTweet = service.showTweet("1", fields);
         assertEquals(testTweet.getText(), foundTweet.getText());
+        assertNotEquals(testTweet2.getText(), foundTweet.getText());
         assertNotNull( "Value should NOT be null.", foundTweet.getCoordinates().getCoordinates());
         assertNull("Value should be null.", foundTweet.getEntities());
     }
 
     @Test
     public void deleteTweets() throws Exception {
-        when(dao.deleteById(any())).thenReturn(testTweet);
+        when(dao.deleteById(any(String.class))).thenReturn(testTweet);
         String [] ids = {"1"};
         List<Tweet> deletedTweets = service.deleteTweets(ids);
         assertFalse(deletedTweets.isEmpty());
         assertEquals(testTweet.getText(), deletedTweets.get(0).getText());
+
     }
 }
