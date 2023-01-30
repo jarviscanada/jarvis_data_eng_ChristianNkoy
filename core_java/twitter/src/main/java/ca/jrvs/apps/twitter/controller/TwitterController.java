@@ -7,9 +7,12 @@ import ca.jrvs.apps.twitter.service.Service;
 import java.util.List;
 import java.util.ArrayList;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import static ca.jrvs.apps.twitter.dao.TweetUtil.buildTweet;
 
+@Component
 public class TwitterController implements Controller{
     private static final String COORD_SEP = ":";
     private static final String COMMA = ",";
@@ -21,6 +24,7 @@ public class TwitterController implements Controller{
      *
      * @param service instance of class Service
      */
+    @Autowired
     public TwitterController (Service service) {
         this.service = service;
     }

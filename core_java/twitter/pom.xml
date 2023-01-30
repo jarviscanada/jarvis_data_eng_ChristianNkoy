@@ -16,8 +16,32 @@
   <!--Make sure you use JDK1.8-->
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.12.4</version>
+        <configuration>
+          <environmentVariables>
+            <CONSUMER_KEY>BUoW7hL9V6zHAM04H2OqVo9BI</CONSUMER_KEY>
+            <CONSUMER_SECRET>JuiYKXASVNbFCTVMVjpdEtdShLbgk8V1U9ZIbZM8xSPaeQLBSM</CONSUMER_SECRET>
+            <ACCESS_TOKEN>1594008957697380357-Za4puzjXM7XmnqjrAHisriDiIqjBtP</ACCESS_TOKEN>
+            <TOKEN_SECRET>n172dDPpNaoajCeyAYO2apLwrTj4TZLXYUgvwJW6fhlkU</TOKEN_SECRET>
+          </environmentVariables>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>ca.jrvs.apps.twitter.spring.TwitterCLISpringBoot</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
   <!--dependencies-->
   <dependencies>
@@ -64,6 +88,8 @@
       <artifactId>httpclient</artifactId>
       <version>4.5.7</version>
     </dependency>
+
+
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>

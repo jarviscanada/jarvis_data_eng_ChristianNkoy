@@ -2,6 +2,7 @@ package ca.jrvs.apps.twitter.service;
 
 import ca.jrvs.apps.twitter.dao.CrdDao;
 import ca.jrvs.apps.twitter.model.Tweet;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.lang.reflect.Field;
 
+@org.springframework.stereotype.Service
 public class TwitterService implements Service{
 
     private CrdDao dao;
@@ -19,6 +21,7 @@ public class TwitterService implements Service{
     private static final int MAX_LATITUDE = 90;
     private static final int MIN_LATITUDE = -90;
 
+    @Autowired
     public TwitterService(CrdDao dao){this.dao = dao;}
 
     /**

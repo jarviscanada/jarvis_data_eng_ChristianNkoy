@@ -24,9 +24,9 @@ public class TwitterControllerIntTest {
     private Tweet buildTweet() throws Exception {
         //build tweet
         String hashtag = "#abc";
-        String text = "@someone Test tweet from Marrakesh" + hashtag + System.currentTimeMillis();
-        Double lon = -7.988225530198496;
-        Double lat = 31.62604888712559;
+        String text = "Test tweet from somewhere" + hashtag + System.currentTimeMillis();
+        Double lon = -7.888225530198496;
+        Double lat = 31.67604888712559;
         return TweetUtil.buildTweet(text, lon, lat);
     }
 
@@ -50,7 +50,7 @@ public class TwitterControllerIntTest {
 
     @Test
     public void postTweet() throws Exception {
-        String[] args = {"post", "This is a tweet from Rio de Janeiro.", "-22.90346877288241:-43.179872073443065"};
+        String[] args = {"post", "This is a tweet from South America.", "-22.80346877288241:-42.179872073443065"};
         Tweet createdTweet = controller.postTweet(args);
         String [] fields = {"id_str", "text", "coordinates"};
 
