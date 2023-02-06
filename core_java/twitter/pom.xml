@@ -1,8 +1,8 @@
-<project  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xmlns="http://maven.apache.org/POM/4.0.0"
-          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-<!--Parent project-->
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -10,18 +10,15 @@
     <relativePath/>
   </parent>
 
-  <!--Project name-->
   <groupId>ca.jrvs.apps</groupId>
   <artifactId>twitter</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <!--Make sure you use JDK1.8-->
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
-  <!--dependencies-->
   <dependencies>
     <!--oauth 1.0 and httpclient4-->
     <dependency>
@@ -29,21 +26,17 @@
       <artifactId>signpost-commonshttp4</artifactId>
       <version>1.2.1.2</version>
     </dependency>
-
     <!--Jackson JSON-->
-    <!--dependency version is inherited from the parent-->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
     </dependency>
-
     <!--testing-->
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -61,23 +54,20 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.5.7</version>
-    </dependency>
 
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpcore</artifactId>
-      <version>4.0.1</version>
+      <version>4.4.16</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.4</version>
+      <version>3.12.0</version>
     </dependency>
+
+
   </dependencies>
 
   <build>
@@ -85,20 +75,7 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <mainClass>ca.jrvs.apps.twitter.spring.TwitterCLISpringBoot</mainClass>
-        </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M8</version>
-        <configuration>
-          <skipTests>true</skipTests>
-        </configuration>
-      </plugin>
-
     </plugins>
   </build>
-
 </project>

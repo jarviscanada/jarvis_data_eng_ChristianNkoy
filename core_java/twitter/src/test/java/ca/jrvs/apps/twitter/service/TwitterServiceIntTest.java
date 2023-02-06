@@ -6,6 +6,7 @@ import ca.jrvs.apps.twitter.dao.TwitterDao;
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.model.Tweet;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
 
@@ -19,12 +20,10 @@ public class TwitterServiceIntTest {
     private TwitterService service;
     private TwitterDao dao;
 
-    private Tweet buildTweet() throws Exception {
+    private Tweet buildTweet(String text) throws Exception {
         //build tweet
-        String hashtag = "#abc";
-        String text = "@someone Test tweet from Marrakesh" + hashtag + System.currentTimeMillis();
-        Double lon = -7.988225530198496;
-        Double lat = 31.62604888712559;
+        Double lon = -8d;
+        Double lat = 23d;
         return TweetUtil.buildTweet(text, lon, lat);
     }
 
@@ -47,7 +46,8 @@ public class TwitterServiceIntTest {
 
     @Test
     public void postTweet() throws Exception {
-        Tweet tweet = buildTweet();
+        String text = "Test post tweet number 2";
+        Tweet tweet = buildTweet(text);
         Tweet createdTweet = service.postTweet(tweet);
 
         //check if tweet is created
@@ -61,7 +61,8 @@ public class TwitterServiceIntTest {
 
     @Test
     public void showTweet() throws Exception {
-        Tweet tweet = buildTweet();
+        String text = "Test show tweet number 2";
+        Tweet tweet = buildTweet(text);
         Tweet createdTweet = dao.create(tweet);
 
         String[] fields = {"text", "id", "coordinates"};
@@ -74,7 +75,8 @@ public class TwitterServiceIntTest {
 
     @Test
     public void deleteTweets() throws Exception {
-        Tweet tweet = buildTweet();
+        String text = "Test delete tweet number 2";
+        Tweet tweet = buildTweet(text);
         Tweet createdTweet = dao.create(tweet);
         List<Tweet> deletedTweets = service.deleteTweets(new String[] {createdTweet.getId_str()});
 

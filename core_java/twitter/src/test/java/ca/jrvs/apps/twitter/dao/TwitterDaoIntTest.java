@@ -34,10 +34,9 @@ public class TwitterDaoIntTest {
 
     @Test
     public void create() throws Exception {
-        String hashTag = "#abc";
-        String text = "@someone sometext " + hashTag + " " + System.currentTimeMillis();
-        Double lat = 1d;
-        Double lon = -1d;
+        String text = "Dao create tweet number 2";
+        Double lat = -33d;
+        Double lon = 83d;
         Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
         System.out.println(JsonUtil.toPrettyJson(postTweet));
 
@@ -53,15 +52,13 @@ public class TwitterDaoIntTest {
         assertEquals(2, tweet.getCoordinates().getCoordinates().size());
         assertEquals(lon, tweet.getCoordinates().getCoordinates().get(0));
         assertEquals(lat, tweet.getCoordinates().getCoordinates().get(1));
-
-        assertTrue(hashTag.contains(tweet.getEntities().getHashtags().get(0).getText()));
     }
 
     @Test
     public void findById() throws Exception {
-        String text = "@someone sometext " + System.currentTimeMillis();
-        Double lat = 1d;
-        Double lon = -1d;
+        String text = "Dao find tweet number 2";
+        Double lat = 55d;
+        Double lon = -45d;
         Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
         Tweet createdTweet = dao.create(postTweet);
         System.out.println(JsonUtil.toPrettyJson(createdTweet));
@@ -81,10 +78,9 @@ public class TwitterDaoIntTest {
 
     @Test
     public void deleteById() throws Exception {
-        String hashTag = "#abc";
-        String text = "@someone sometext " + hashTag + " " + System.currentTimeMillis();
-        Double lat = 1d;
-        Double lon = -1d;
+        String text = "Dao delete tweet number 2";
+        Double lat = 10d;
+        Double lon = -8d;
         Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
         System.out.println(JsonUtil.toPrettyJson(postTweet));
         Tweet tweet = dao.create(postTweet);

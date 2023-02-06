@@ -7,6 +7,7 @@ import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.service.TwitterService;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
 
@@ -21,12 +22,10 @@ public class TwitterControllerIntTest {
     private TwitterService service;
     private TwitterDao dao;
 
-    private Tweet buildTweet() throws Exception {
+    private Tweet buildTweet(String text) throws Exception {
         //build tweet
-        String hashtag = "#abc";
-        String text = "Test tweet from somewhere" + hashtag + System.currentTimeMillis();
-        Double lon = -7.888225530198496;
-        Double lat = 31.67604888712559;
+        Double lon = 10d;
+        Double lat = 11d;
         return TweetUtil.buildTweet(text, lon, lat);
     }
 
@@ -50,7 +49,7 @@ public class TwitterControllerIntTest {
 
     @Test
     public void postTweet() throws Exception {
-        String[] args = {"post", "This is a tweet from South America.", "-22.80346877288241:-42.179872073443065"};
+        String[] args = {"post", "Violets are blue", "-14:19"};
         Tweet createdTweet = controller.postTweet(args);
         String [] fields = {"id_str", "text", "coordinates"};
 
@@ -67,7 +66,8 @@ public class TwitterControllerIntTest {
     @Test
     public void showTweet() throws Exception {
         // Create tweet
-        Tweet tweet = buildTweet();
+        String text = "Controller show tweet number 2";
+        Tweet tweet = buildTweet(text);
         Tweet createdTweet = service.postTweet(tweet);
         String id = createdTweet.getId_str();
         String [] args = {"show", id, "text", "id_str", "coordinates"};
@@ -81,7 +81,8 @@ public class TwitterControllerIntTest {
 
     @Test
     public void deleteTweets() throws Exception {
-        Tweet tweet = buildTweet();
+        String text = "Controller delete tweet number 2";
+        Tweet tweet = buildTweet(text);
         Tweet createdTweet = service.postTweet(tweet);
         String id = createdTweet.getId_str();
         String [] args = {"delete", id};
